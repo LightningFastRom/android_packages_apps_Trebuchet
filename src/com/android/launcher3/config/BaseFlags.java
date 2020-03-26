@@ -61,7 +61,7 @@ public abstract class BaseFlags {
     public static final boolean IS_DOGFOOD_BUILD = false;
 
     // When enabled the promise icon is visible in all apps while installation an app.
-    public static final boolean LAUNCHER3_PROMISE_APPS_IN_ALL_APPS = false;
+    public static final boolean LAUNCHER3_PROMISE_APPS_IN_ALL_APPS = true;
 
     // When enabled a promise icon is added to the home screen when install session is active.
     public static final TogglableFlag PROMISE_APPS_NEW_INSTALLS =
@@ -75,7 +75,7 @@ public abstract class BaseFlags {
             "An example flag that doesn't do anything. Useful for testing");
 
     //Feature flag to enable pulling down navigation shade from workspace.
-    public static final boolean PULL_DOWN_STATUS_BAR = true;
+    public static final boolean PULL_DOWN_STATUS_BAR = false;
 
     // Features to control Launcher3Go behavior
     public static final boolean GO_DISABLE_WIDGETS = false;
@@ -101,7 +101,7 @@ public abstract class BaseFlags {
             "Use adaptive icons for window animations.");
 
     public static final TogglableFlag ENABLE_QUICKSTEP_LIVE_TILE = new TogglableFlag(
-            "ENABLE_QUICKSTEP_LIVE_TILE", false, "Enable live tile in Quickstep overview");
+            "ENABLE_QUICKSTEP_LIVE_TILE", true, "Enable live tile in Quickstep overview");
 
     public static final TogglableFlag ENABLE_HINTS_IN_OVERVIEW = new TogglableFlag(
             "ENABLE_HINTS_IN_OVERVIEW", true,
@@ -116,14 +116,14 @@ public abstract class BaseFlags {
             "Suggests folder names instead of blank text.");
 
     public static final TogglableFlag APP_SEARCH_IMPROVEMENTS = new TogglableFlag(
-            "APP_SEARCH_IMPROVEMENTS", false,
+            "APP_SEARCH_IMPROVEMENTS", true,
             "Adds localized title and keyword search and ranking");
 
     public static final TogglableFlag ENABLE_PREDICTION_DISMISS = new TogglableFlag(
-            "ENABLE_PREDICTION_DISMISS", false, "Allow option to dimiss apps from predicted list");
+            "ENABLE_PREDICTION_DISMISS", true, "Allow option to dimiss apps from predicted list");
 
     public static final TogglableFlag ASSISTANT_GIVES_LAUNCHER_FOCUS = new TogglableFlag(
-            "ASSISTANT_GIVES_LAUNCHER_FOCUS", false,
+            "ASSISTANT_GIVES_LAUNCHER_FOCUS", true,
             "Allow Launcher to handle nav bar gestures while Assistant is running over it");
 
     public static void initialize(Context context) {
