@@ -101,10 +101,10 @@ public abstract class BaseFlags {
             "Use adaptive icons for window animations.");
 
     public static final TogglableFlag ENABLE_QUICKSTEP_LIVE_TILE = new TogglableFlag(
-            "ENABLE_QUICKSTEP_LIVE_TILE", true, "Enable live tile in Quickstep overview");
+            "ENABLE_QUICKSTEP_LIVE_TILE", false, "Enable live tile in Quickstep overview");
 
     public static final TogglableFlag ENABLE_HINTS_IN_OVERVIEW = new TogglableFlag(
-            "ENABLE_HINTS_IN_OVERVIEW", true,
+            "ENABLE_HINTS_IN_OVERVIEW", false,
             "Show chip hints and gleams on the overview screen");
 
     public static final TogglableFlag FAKE_LANDSCAPE_UI = new TogglableFlag(
@@ -112,18 +112,18 @@ public abstract class BaseFlags {
             "Rotate launcher UI instead of using transposed layout");
 
     public static final TogglableFlag FOLDER_NAME_SUGGEST = new TogglableFlag(
-            "FOLDER_NAME_SUGGEST", true,
+            "FOLDER_NAME_SUGGEST", false,
             "Suggests folder names instead of blank text.");
 
     public static final TogglableFlag APP_SEARCH_IMPROVEMENTS = new TogglableFlag(
-            "APP_SEARCH_IMPROVEMENTS", true,
+            "APP_SEARCH_IMPROVEMENTS", false,
             "Adds localized title and keyword search and ranking");
 
     public static final TogglableFlag ENABLE_PREDICTION_DISMISS = new TogglableFlag(
-            "ENABLE_PREDICTION_DISMISS", true, "Allow option to dimiss apps from predicted list");
+            "ENABLE_PREDICTION_DISMISS", false, "Allow option to dimiss apps from predicted list");
 
     public static final TogglableFlag ASSISTANT_GIVES_LAUNCHER_FOCUS = new TogglableFlag(
-            "ASSISTANT_GIVES_LAUNCHER_FOCUS", true,
+            "ASSISTANT_GIVES_LAUNCHER_FOCUS", false,
             "Allow Launcher to handle nav bar gestures while Assistant is running over it");
 
     public static void initialize(Context context) {
