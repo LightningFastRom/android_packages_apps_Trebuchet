@@ -30,6 +30,7 @@ import android.view.Surface;
 
 import androidx.annotation.Nullable;
 
+import com.android.launcher3.config.BaseFlags;
 import com.android.launcher3.CellLayout.ContainerType;
 import com.android.launcher3.graphics.IconShape;
 import com.android.launcher3.icons.DotRenderer;
@@ -236,13 +237,11 @@ public class DeviceProfile {
             int extraSpace = getCellSize().y - iconSizePx - iconDrawablePaddingPx * 2
                     - verticalDragHandleSizePx;
             hotseatBarSizePx += extraSpace;
-            if (!FeatureFlags.HOTSEAT_WIDGET) {
-                // Set an upper bound on bottom padding for very tall devices.
-                int maxExtraSpace = Math.round((hotseatBarSizePx - extraSpace) * 0.67f);
-                if (extraSpace > maxExtraSpace) {
-                    hotseatBarTopPaddingPx += extraSpace - maxExtraSpace;
-                    extraSpace = maxExtraSpace;
-                }
+            // Set an upper bound on bottom padding for very tall devices.
+            int maxExtraSpace = Math.round((hotseatBarSizePx - extraSpace) * 0.67f);
+            if (extraSpace > maxExtraSpace) {
+                hotseatBarTopPaddingPx += extraSpace - maxExtraSpace;
+                extraSpace = maxExtraSpace;
             }
             hotseatBarBottomPaddingPx += extraSpace;
 
@@ -250,7 +249,7 @@ public class DeviceProfile {
             //updateAvailableDimensions(dm, res);
         }
 
-        if (originalIDP != null) {
+        if (originalIDP != null && BaseFlags.MAINTAIN_DRAWER_GRID) {
             // Grid size change should not affect All Apps UI, so we use the original profile
             // measurements here.
             DeviceProfile originalProfile = isLandscape

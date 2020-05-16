@@ -87,6 +87,9 @@ public abstract class BaseFlags {
     // trying to make them fit the orientation the device is in.
     public static final boolean OVERVIEW_USE_SCREENSHOT_ORIENTATION = true;
 
+    // When enabled maintain the app drawer grid separately from the workspace.
+    public static final boolean MAINTAIN_DRAWER_GRID = true;
+
     /**
      * Feature flag to handle define config changes dynamically instead of killing the process.
      */

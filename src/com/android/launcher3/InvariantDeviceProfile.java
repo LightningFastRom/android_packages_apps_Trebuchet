@@ -46,6 +46,7 @@ import android.util.Xml;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
+import com.android.launcher3.config.BaseFlags;
 import com.android.launcher3.graphics.IconShape;
 import com.android.launcher3.util.ConfigMonitor;
 import com.android.launcher3.util.DefaultDisplay;
@@ -268,7 +269,9 @@ public class InvariantDeviceProfile implements OnSharedPreferenceChangeListener 
 
             initGridOption(context, filteredOptions, interpolatedDisplayOption,
                     displayInfo.metrics);
-            numAllAppsColumns = originalIDP.numAllAppsColumns;
+            if (BaseFlags.MAINTAIN_DRAWER_GRID) {
+                numAllAppsColumns = originalIDP.numAllAppsColumns;
+            }
 
             landscapeProfile = new DeviceProfile(context, this, originalIDP, smallestSize,
                     largestSize, largeSide, smallSide, true /* isLandscape */,
