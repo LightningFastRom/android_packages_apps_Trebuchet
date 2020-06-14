@@ -56,9 +56,9 @@ import com.android.quickstep.views.RecentsView;
  */
 public class FlingAndHoldTouchController extends PortraitStatesTouchController {
 
-    private static final long PEEK_IN_ANIM_DURATION = 240;
-    private static final long PEEK_OUT_ANIM_DURATION = 100;
-    private static final float MAX_DISPLACEMENT_PERCENT = 0.75f;
+    private static final long PEEK_IN_ANIM_DURATION = 295;
+    private static final long PEEK_OUT_ANIM_DURATION = 120;
+    private static final float MAX_DISPLACEMENT_PERCENT = 0.25f;
 
     private final MotionPauseDetector mMotionPauseDetector;
     private final float mMotionPauseMinDisplacement;

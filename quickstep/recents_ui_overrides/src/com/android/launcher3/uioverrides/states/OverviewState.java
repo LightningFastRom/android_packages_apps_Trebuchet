@@ -154,11 +154,15 @@ public class OverviewState extends LauncherState {
 
     @Override
     public float getVerticalProgress(Launcher launcher) {
+        /*
         if ((getVisibleElements(launcher) & ALL_APPS_HEADER_EXTRA) == 0) {
             // We have no all apps content, so we're still at the fully down progress.
             return super.getVerticalProgress(launcher);
         }
         return getDefaultVerticalProgress(launcher);
+         */
+
+        return Math.min(1f, launcher.getAllAppsController().getProgress() + 0.02f);
     }
 
     public static float getDefaultVerticalProgress(Launcher launcher) {
