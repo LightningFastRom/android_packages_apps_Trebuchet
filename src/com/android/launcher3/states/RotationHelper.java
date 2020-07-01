@@ -23,6 +23,7 @@ import static android.util.DisplayMetrics.DENSITY_DEVICE_STABLE;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.res.Resources;
+import android.content.pm.PackageManager;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 
@@ -53,9 +54,10 @@ public class RotationHelper implements OnSharedPreferenceChangeListener {
     public static final int REQUEST_LOCK = 2;
 
     private final Launcher mLauncher;
-    private final SharedPreferences mPrefs;
+	private final PackageManager mPM;
 
     private boolean mIgnoreAutoRotateSettings;
+	private boolean mDeviceHasAcceleroeter;
     private boolean mAutoRotateEnabled;
 
     /**
@@ -83,14 +85,8 @@ public class RotationHelper implements OnSharedPreferenceChangeListener {
 
         // On large devices we do not handle auto-rotate differently.
         mIgnoreAutoRotateSettings = mLauncher.getResources().getBoolean(R.bool.allow_rotation);
-        if (!mIgnoreAutoRotateSettings) {
-            mPrefs = Utilities.getPrefs(mLauncher);
-            mPrefs.registerOnSharedPreferenceChangeListener(this);
-            mAutoRotateEnabled = mPrefs.getBoolean(ALLOW_ROTATION_PREFERENCE_KEY,
-                    getAllowRotationDefaultValue());
-        } else {
-            mPrefs = null;
-        }
+		mPM = mLauncher.getPackageManager();
+		mDeviceHasAcceleroeter = mPM.hasSystemFeature(PackageManager.FEATURE_SENSOR_ACCELEROMETER);
     }
 
     public void setRotationHadDifferentUI(boolean rotationHasDifferentUI) {
@@ -98,7 +94,7 @@ public class RotationHelper implements OnSharedPreferenceChangeListener {
     }
 
     public boolean homeScreenCanRotate() {
-        return mRotationHasDifferentUI || mIgnoreAutoRotateSettings || mAutoRotateEnabled
+        return mRotationHasDifferentUI || mDeviceHasAcceleroeter || mIgnoreAutoRotateSettings || mAutoRotateEnabled
                 || mStateHandlerRequest != REQUEST_NONE
                 || mLauncher.getDeviceProfile().isMultiWindowMode;
     }
@@ -118,15 +114,6 @@ public class RotationHelper implements OnSharedPreferenceChangeListener {
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
-        boolean wasRotationEnabled = mAutoRotateEnabled;
-        mAutoRotateEnabled = mPrefs.getBoolean(ALLOW_ROTATION_PREFERENCE_KEY,
-                getAllowRotationDefaultValue());
-        if (mAutoRotateEnabled != wasRotationEnabled) {
-
-            notifyChange();
-            updateRotationAnimation();
-            mLauncher.reapplyUi();
-        }
     }
 
     public void setStateHandlerRequest(int request) {
@@ -169,9 +156,6 @@ public class RotationHelper implements OnSharedPreferenceChangeListener {
     public void destroy() {
         if (!mDestroyed) {
             mDestroyed = true;
-            if (mPrefs != null) {
-                mPrefs.unregisterOnSharedPreferenceChangeListener(this);
-            }
         }
     }
 
