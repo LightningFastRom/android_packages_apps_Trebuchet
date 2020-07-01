@@ -16,14 +16,12 @@
 
 <androidx.preference.PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
-
     <SwitchPreference
-        android:defaultValue="true"
-        android:key="pref_workspace_edit"
-        android:persistent="true"
-        android:title="@string/settings_edit_allow_title"
-        android:summaryOn="@string/settings_edit_allow_summary_on"
-        android:summaryOff="@string/settings_edit_allow_summary_off" />
+        android:key="pref_allowRotation"
+        android:title="@string/allow_rotation_title"
+        android:summary="@string/allow_rotation_desc"
+        android:defaultValue="@bool/allow_rotation"
+        android:persistent="true" />
 
     <com.android.launcher3.settings.NotificationDotsPreference
         android:key="pref_icon_badging"
@@ -37,58 +35,86 @@
                 android:value="notification_badging" />
         </intent>
     </com.android.launcher3.settings.NotificationDotsPreference>
+    
+    <androidx.preference.PreferenceCategory
+        android:title="@string/apprences_setting_title"
+        android:key="apprences_setting_category">
+        <com.android.launcher3.settings.IconPackPreference
+            android:key="pref_iconPackPackage"
+            android:title="@string/icon_pack"
+            android:summary="@string/icon_pack_summary"
+            android:persistent="true" />
+    
+        <SwitchPreference
+            android:key="pref_desktop_show_labels"
+            android:title="@string/desktop_show_labels"
+            android:defaultValue="true"
+            android:persistent="true" />
+    
+        <SwitchPreference
+            android:key="pref_show_labels_landscape"
+            android:title="@string/show_labels_landscape"
+            android:defaultValue="false"
+            android:persistent="true" />
+    </androidx.preference.PreferenceCategory>
+    
+    <androidx.preference.PreferenceCategory
+        android:title="@string/app_draw_setting_title"
+        android:key="app_draw_setting_category">
 
-    <SwitchPreference
-        android:key="pref_add_icon_to_home"
-        android:title="@string/auto_add_shortcuts_label"
-        android:summary="@string/auto_add_shortcuts_description"
-        android:defaultValue="true"
-        android:persistent="true" />
+        <SwitchPreference
+            android:key="pref_drawer_show_labels"
+            android:title="@string/drawer_show_labels"
+            android:defaultValue="true"
+            android:persistent="true" />
+    </androidx.preference.PreferenceCategory>
 
-    <SwitchPreference
-        android:key="pref_allowRotation"
-        android:title="@string/allow_rotation_title"
-        android:summary="@string/allow_rotation_desc"
-        android:defaultValue="@bool/allow_rotation"
-        android:persistent="true" />
+    <androidx.preference.PreferenceCategory
+        android:title="@string/home_screen_setting_title"
+        android:key="home_screen_setting_category">
+    
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="pref_workspace_edit"
+            android:persistent="true"
+            android:title="@string/settings_edit_allow_title"
+            android:summaryOn="@string/settings_edit_allow_summary_on"
+            android:summaryOff="@string/settings_edit_allow_summary_off" />
+        
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="pref_enable_minus_one"
+            android:summary="@string/pref_show_google_now_summary"
+            android:title="@string/title_show_google_app" />
 
-    <SwitchPreference
-        android:defaultValue="true"
-        android:key="pref_enable_minus_one"
-        android:summary="@string/pref_show_google_now_summary"
-        android:title="@string/title_show_google_app" />
-
-    <Preference
-        android:key="pref_trust_apps"
-        android:title="@string/trust_apps_manager_name" />
-
+        <SwitchPreference
+            android:key="pref_add_icon_to_home"
+            android:title="@string/auto_add_shortcuts_label"
+            android:summary="@string/auto_add_shortcuts_description"
+            android:defaultValue="true"
+            android:persistent="true" />
+	</androidx.preference.PreferenceCategory>
+    
+    <androidx.preference.PreferenceCategory
+        android:title="@string/mic_setting_title"
+        android:key="mic_setting_category">
+        
+        <SwitchPreference      
+            android:key="pref_allowSwipeDownClearAll"
+            android:title="@string/allow_swipe_down_clearall_title"
+            android:summary="@string/allow_swipe_down_clearall_desc"
+            android:defaultValue="@bool/allow_swipe_down_clearall"
+            android:persistent="true" />
+        
+        <Preference
+            android:key="pref_trust_apps"
+            android:title="@string/trust_apps_manager_name" />
+            
+    </androidx.preference.PreferenceCategory>
+    
     <androidx.preference.PreferenceScreen
         android:key="pref_developer_options"
         android:persistent="false"
         android:title="Developer Options"
         android:fragment="com.android.launcher3.settings.DeveloperOptionsFragment"/>
-
-    <com.android.launcher3.settings.IconPackPreference
-        android:key="pref_iconPackPackage"
-        android:title="@string/icon_pack"
-        android:summary="@string/icon_pack_summary"
-        android:persistent="true" />
-
-    <SwitchPreference
-        android:key="pref_desktop_show_labels"
-        android:title="@string/desktop_show_labels"
-        android:defaultValue="true"
-        android:persistent="true" />
-
-    <SwitchPreference
-        android:key="pref_drawer_show_labels"
-        android:title="@string/drawer_show_labels"
-        android:defaultValue="true"
-        android:persistent="true" />
-
-    <SwitchPreference
-        android:key="pref_show_labels_landscape"
-        android:title="@string/show_labels_landscape"
-        android:defaultValue="false"
-        android:persistent="true" />
 </androidx.preference.PreferenceScreen>
