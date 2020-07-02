@@ -38,18 +38,7 @@
             android:title="@string/icon_pack"
             android:summary="@string/icon_pack_summary"
             android:persistent="true" />
-    
-        <SwitchPreference
-            android:key="pref_desktop_show_labels"
-            android:title="@string/desktop_show_labels"
-            android:defaultValue="true"
-            android:persistent="true" />
-    
-        <SwitchPreference
-            android:key="pref_show_labels_landscape"
-            android:title="@string/show_labels_landscape"
-            android:defaultValue="false"
-            android:persistent="true" />
+
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory
@@ -62,7 +51,13 @@
             android:persistent="true"
             android:summary="@string/pref_qsb_show_summary"
             android:title="@string/pref_qsb_show_title"/>
-
+        
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="pref_enable_minus_one"
+            android:summary="@string/pref_show_google_now_summary"
+            android:title="@string/title_show_google_app" />
+            
         <SwitchPreference
             android:defaultValue="true"
             android:key="pref_workspace_edit"
@@ -70,19 +65,19 @@
             android:title="@string/settings_edit_allow_title"
             android:summaryOn="@string/settings_edit_allow_summary_on"
             android:summaryOff="@string/settings_edit_allow_summary_off" />
-        
+            
         <SwitchPreference
-            android:defaultValue="true"
-            android:key="pref_enable_minus_one"
-            android:summary="@string/pref_show_google_now_summary"
-            android:title="@string/title_show_google_app" />
-
-        <SwitchPreference
-            android:key="pref_add_icon_to_home"
-            android:title="@string/auto_add_shortcuts_label"
-            android:summary="@string/auto_add_shortcuts_description"
+            android:key="pref_desktop_show_labels"
+            android:title="@string/desktop_show_labels"
             android:defaultValue="true"
             android:persistent="true" />
+    
+        <SwitchPreference
+            android:key="pref_show_labels_landscape"
+            android:title="@string/show_labels_landscape"
+            android:defaultValue="false"
+            android:persistent="true" />
+
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory
@@ -108,6 +103,13 @@
             android:title="@string/allow_swipe_down_clearall_title"
             android:summary="@string/allow_swipe_down_clearall_desc"
             android:defaultValue="@bool/allow_swipe_down_clearall"
+            android:persistent="true" />
+        
+        <SwitchPreference
+            android:key="pref_add_icon_to_home"
+            android:title="@string/auto_add_shortcuts_label"
+            android:summary="@string/auto_add_shortcuts_description"
+            android:defaultValue="true"
             android:persistent="true" />
         
         <Preference
