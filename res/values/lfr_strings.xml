@@ -22,7 +22,7 @@
     <!-- General -->
     <string name="apprences_setting_title">Apprence</string>
     <string name="home_screen_setting_title">Home Screen</string>
-    <string name="app_draw_setting_title">App drawer</string>
+    <string name="app_drawer_setting_title">App drawer</string>
     <string name="mic_setting_title">Miscellaneous</string>
     
 </resources>

@@ -30,9 +30,9 @@
     </com.android.launcher3.settings.NotificationDotsPreference>
     
     <androidx.preference.PreferenceCategory
-        android:title="@string/apprences_setting_title"
-        android:key="apprences_setting_category"
-        android:icon="@mipmap/ic_apprences_setting_icon">
+        android:key="pref_apprences_setting_category"
+        android:title="@string/apprences_setting_title">
+        <!-- android:icon="@mipmap/ic_apprences_setting_icon"> -->
         <com.android.launcher3.settings.IconPackPreference
             android:key="pref_iconPackPackage"
             android:title="@string/icon_pack"
@@ -42,9 +42,9 @@
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory
-        android:title="@string/home_screen_setting_title"
-        android:key="home_screen_setting_category"
-        android:icon="@mipmap/ic_home_screen_setting_icon">
+        android:key="pref_home_screen_setting_category"
+        android:title="@string/home_screen_setting_title">
+        <!-- android:icon="@mipmap/ic_home_screen_setting_icon"> -->
         <SwitchPreference
             android:defaultValue="true"
             android:key="pref_qsb_show"
@@ -81,9 +81,9 @@
     </androidx.preference.PreferenceCategory>
 
     <androidx.preference.PreferenceCategory
-        android:title="@string/app_draw_setting_title"
-        android:key="app_draw_setting_category"
-        android:icon="@mipmap/ic_app_draw_setting_icon">
+        android:key="pref_app_drawer_setting_category"
+        android:title="@string/app_drawer_setting_title">
+        <!-- android:icon="@mipmap/ic_app_drawer_setting_icon"> -->
 
         <SwitchPreference
             android:key="pref_drawer_show_labels"
@@ -94,9 +94,9 @@
 
     
     <androidx.preference.PreferenceCategory
-        android:title="@string/mic_setting_title"
-        android:key="mic_setting_category"
-        android:icon="@mipmap/ic_mic_setting_icon">
+        android:key="pref_mic_setting_category"
+        android:title="@string/mic_setting_title">
+        <!-- android:icon="@mipmap/ic_mic_setting_icon"> -->
         
         <SwitchPreference      
             android:key="pref_allowSwipeDownClearAll"
@@ -123,4 +123,5 @@
         android:persistent="false"
         android:title="Developer Options"
         android:fragment="com.android.launcher3.settings.DeveloperOptionsFragment"/>
+        <!-- android:icon="@mipmap/ic_mic_setting_icon"/> -->
 </androidx.preference.PreferenceScreen>
