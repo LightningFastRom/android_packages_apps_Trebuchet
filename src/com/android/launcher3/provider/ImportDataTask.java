@@ -43,6 +43,7 @@ import com.android.launcher3.LauncherSettings;
 import com.android.launcher3.LauncherSettings.Favorites;
 import com.android.launcher3.LauncherSettings.Settings;
 import com.android.launcher3.Workspace;
+import com.android.launcher3.Utilities;
 import com.android.launcher3.compat.UserManagerCompat;
 import com.android.launcher3.config.FeatureFlags;
 import com.android.launcher3.logging.FileLog;
@@ -103,8 +104,8 @@ public class ImportDataTask {
         String profileId = Long.toString(UserManagerCompat.getInstance(mContext)
                 .getSerialNumberForUser(Process.myUserHandle()));
 
-        boolean createEmptyRowOnFirstScreen = false;
-        if (FeatureFlags.QSB_ON_FIRST_SCREEN) {
+        boolean createEmptyRowOnFirstScreen;
+        if (Utilities.showQsbWidget(mContext)) {
             try (Cursor c = mContext.getContentResolver().query(mOtherFavoritesUri, null,
                     // get items on the first row of the first screen (min screen id)
                     "profileId = ? AND container = -100 AND cellY = 0 AND screen = " +
