@@ -160,7 +160,8 @@ public class SettingsActivity extends Activity
             Preference showQsbWidget = findPreference(Utilities.QSB_SHOW);
             showQsbWidget.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    Utilities.restart(getActivity());
+                    LauncherAppState.getInstanceNoCreate().setNeedsRestart();
+                    //Utilities.restart(getActivity());
                     return true;
                 }
             });
