@@ -275,8 +275,12 @@ public class Workspace extends PagedView<WorkspacePageIndicator>
         mWallpaperManager = WallpaperManager.getInstance(context);
 
         mWallpaperOffset = new WallpaperOffsetInterpolator(this);
-
-        setHapticFeedbackEnabled(false);
+		
+		if (Utilities.hadFeature(1, context)) {
+        	setHapticFeedbackEnabled(true);
+		} else {
+			setHapticFeedbackEnabled(false);
+		}
         initWorkspace();
 
         // Disable multitouch across the workspace/all apps/customize tray

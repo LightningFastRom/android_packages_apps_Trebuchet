@@ -51,6 +51,7 @@ import com.android.launcher3.compat.AccessibilityManagerCompat;
 import com.android.launcher3.config.FeatureFlags;
 import com.android.launcher3.pageindicators.PageIndicator;
 import com.android.launcher3.touch.OverScroll;
+import com.android.launcher3.Utilities;
 import com.android.launcher3.util.OverScroller;
 import com.android.launcher3.util.Thunk;
 
@@ -159,7 +160,11 @@ public abstract class PagedView<T extends View & PageIndicator> extends ViewGrou
         mPageIndicatorViewId = a.getResourceId(R.styleable.PagedView_pageIndicator, -1);
         a.recycle();
 
-        setHapticFeedbackEnabled(false);
+        if (Utilities.hadFeature(1, context)) {
+        	setHapticFeedbackEnabled(true);
+		} else {
+			setHapticFeedbackEnabled(false);
+		}
         mIsRtl = Utilities.isRtl(getResources());
         init();
     }

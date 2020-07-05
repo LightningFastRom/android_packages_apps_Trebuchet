@@ -54,6 +54,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.PowerManager;
 import android.os.SystemClock;
+import android.os.Vibrator;
 import android.os.TransactionTooLargeException;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -152,7 +153,27 @@ public final class Utilities {
     public static boolean showQsbWidget(Context context) {
          return getPrefs(context).getBoolean(QSB_SHOW, FeatureFlags.QSB_ON_FIRST_SCREEN);
     }
-
+	
+	
+	/**
+	 * Allow the developer to verify is the device has 
+	 * 1 Vibrator
+	 *
+	 **/
+	public static boolean hadFeature(int Feature, Context context) {
+		switch(Feature){                                                     
+            case 1: 
+			 Vibrator v = (Vibrator) context.getSystemService(context.VIBRATOR_SERVICE);
+			 if (v.hasVibrator()) {
+				 return true;
+			 } else {
+				 return false;
+			 }   
+			 default:
+			 return false;
+        }
+    }
+	
     /**
      * Given a coordinate relative to the descendant, find the coordinate in a parent view's
      * coordinates.

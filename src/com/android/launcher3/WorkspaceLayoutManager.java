@@ -15,10 +15,12 @@
  */
 package com.android.launcher3;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.launcher3.Utilities;
 import com.android.launcher3.folder.Folder;
 import com.android.launcher3.folder.FolderIcon;
 import com.android.launcher3.touch.ItemLongClickListener;
@@ -31,7 +33,10 @@ public interface WorkspaceLayoutManager {
     int EXTRA_EMPTY_SCREEN_ID = -201;
     // The is the first screen. It is always present, even if its empty.
     int FIRST_SCREEN_ID = 0;
-
+	
+	// variable to hold context
+	//@Thunk final Launcher mLauncher = Launcher.getLauncher(context);
+	
     /**
      * At bind time, we use the rank (screenId) to compute x and y for hotseat items.
      * See {@link #addInScreen}.
@@ -125,8 +130,12 @@ public interface WorkspaceLayoutManager {
             // maybe we should be deleting these items from the LauncherModel?
             Log.e(TAG, "Failed to add to item at (" + lp.cellX + "," + lp.cellY + ") to CellLayout");
         }
-
-        child.setHapticFeedbackEnabled(false);
+		//if (Utilities.hadFeature(1, mLauncher)) {
+        	child.setHapticFeedbackEnabled(true);
+		/*} else {
+			child.setHapticFeedbackEnabled(false);
+		}
+		*/
         child.setOnLongClickListener(ItemLongClickListener.INSTANCE_WORKSPACE);
         if (child instanceof DropTarget) {
             onAddDropTarget((DropTarget) child);
