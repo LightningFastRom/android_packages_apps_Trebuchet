@@ -61,7 +61,7 @@ public abstract class BaseFlags {
     public static final boolean IS_DOGFOOD_BUILD = false;
 
     // When enabled the promise icon is visible in all apps while installation an app.
-    public static final boolean LAUNCHER3_PROMISE_APPS_IN_ALL_APPS = true;
+    public static final boolean LAUNCHER3_PROMISE_APPS_IN_ALL_APPS = false;
 
     // When enabled a promise icon is added to the home screen when install session is active.
     public static final TogglableFlag PROMISE_APPS_NEW_INSTALLS =
@@ -112,7 +112,7 @@ public abstract class BaseFlags {
             "Rotate launcher UI instead of using transposed layout");
 
     public static final TogglableFlag FOLDER_NAME_SUGGEST = new TogglableFlag(
-            "FOLDER_NAME_SUGGEST", false,
+            "FOLDER_NAME_SUGGEST", true,
             "Suggests folder names instead of blank text.");
 
     public static final TogglableFlag APP_SEARCH_IMPROVEMENTS = new TogglableFlag(
