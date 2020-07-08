@@ -1,8 +1,8 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion COMPILE_SDK
-    buildToolsVersion BUILD_TOOLS_VERSION
+    compileSdkVersion 29
+    buildToolsVersion '28.0.3'
     publishNonDefault true
 
     defaultConfig {
@@ -35,5 +35,9 @@ android {
 }
 
 dependencies {
-    implementation "androidx.core:core:${ANDROID_X_VERSION}"
+    implementation "androidx.core:core:1.5.0-alpha01"
+}
+
+repositories {
+    google()
 }

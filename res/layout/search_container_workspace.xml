@@ -2,12 +2,13 @@
 <com.aosp.launcher.smartspace.SmartspaceQsbWidget xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
     xmlns:launcher="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/search_container_workspace"
     android:layout_width="match_parent"
     android:layout_height="0dp">
 
     <fragment
-        android:name="com.aosp.launcher.smartspace.SmartspaceQsbWidget$SmartSpaceFragment"
+        class="com.aosp.launcher.smartspace.SmartspaceQsbWidget$SmartSpaceFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:tag="smart_space_view" />
