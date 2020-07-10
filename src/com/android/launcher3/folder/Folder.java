@@ -218,7 +218,6 @@ public class Folder extends AbstractFloatingView implements ClipPathView, DragSo
                 & ~InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
                 | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
         mFolderName.forceDisableSuggestions(true);
-
         mFooter = findViewById(R.id.folder_footer);
 
         // We find out how tall footer wants to be (it is set to wrap_content), so that
@@ -1263,6 +1262,9 @@ public class Folder extends AbstractFloatingView implements ClipPathView, DragSo
         mLauncher.getModelWriter().addOrMoveItemInDatabase(item, mInfo.id, 0, item.cellX,
                 item.cellY);
         updateItemLocationsInDatabaseBatch();
+		
+		// Focus the user to name newly created child
+		mFolderName.focused();
 
         if (mContent.areViewsBound()) {
             mContent.createAndAddViewForRank(item, rank);

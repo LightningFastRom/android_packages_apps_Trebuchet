@@ -24,5 +24,5 @@
     <string name="home_screen_setting_title">Home Screen</string>
     <string name="app_drawer_setting_title">App drawer</string>
     <string name="mic_setting_title">Miscellaneous</string>
-    
+    <string name="default_folder_name">Untitled</string>
 </resources>
