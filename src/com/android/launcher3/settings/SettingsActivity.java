@@ -27,13 +27,16 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.DialogFragment;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceFragment.OnPreferenceStartFragmentCallback;
 import androidx.preference.PreferenceFragment.OnPreferenceStartScreenCallback;
@@ -49,6 +52,8 @@ import com.android.launcher3.config.FeatureFlags;
 import com.android.launcher3.graphics.GridOptionsProvider;
 import com.android.launcher3.lineage.LineageLauncherCallbacks;
 import com.android.launcher3.lineage.LineageUtils;
+import com.android.launcher3.lineage.icon.IconPackStore;
+import com.android.launcher3.lineage.icon.IconPackSettingsActivity;
 import com.android.launcher3.lineage.trust.TrustAppsActivity;
 import com.android.launcher3.uioverrides.plugins.PluginManagerWrapper;
 import com.android.launcher3.util.SecureSettingsObserver;
@@ -73,6 +78,7 @@ public class SettingsActivity extends Activity
 
     public static final String KEY_MINUS_ONE = "pref_enable_minus_one";
     public static final String KEY_TRUST_APPS = "pref_trust_apps";
+    public static final String KEY_ICON_PACK = "pref_icon_pack";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,7 +135,8 @@ public class SettingsActivity extends Activity
     /**
      * This fragment shows the launcher preferences.
      */
-    public static class LauncherSettingsFragment extends PreferenceFragment {
+    public static class LauncherSettingsFragment extends PreferenceFragment implements
+            SharedPreferences.OnSharedPreferenceChangeListener {
 
         private SecureSettingsObserver mNotificationDotsObserver;
 
@@ -151,11 +158,35 @@ public class SettingsActivity extends Activity
             getPreferenceManager().setSharedPreferencesName(LauncherFiles.SHARED_PREFERENCES_KEY);
             setPreferencesFromResource(R.xml.launcher_preferences, rootKey);
 
+            updatePreferences();
+
+            Utilities.getPrefs(getContext())
+                    .registerOnSharedPreferenceChangeListener(this);
+        }
+
+        @Override
+        public void onDestroyView () {
+            Utilities.getPrefs(getContext())
+                .unregisterOnSharedPreferenceChangeListener(this);
+            super.onDestroyView();
+        }
+
+        private void updatePreferences() {
             PreferenceScreen screen = getPreferenceScreen();
             for (int i = screen.getPreferenceCount() - 1; i >= 0; i--) {
-                Preference preference = screen.getPreference(i);
-                if (!initPreference(preference)) {
-                    screen.removePreference(preference);
+                final Preference preference = screen.getPreference(i);
+                if (preference instanceof PreferenceCategory) {
+                    final PreferenceCategory category = (PreferenceCategory) preference;
+                    for (int j = category.getPreferenceCount() - 1; j >= 0; j--) {
+                        final Preference p = category.getPreference(j);
+                        if (!initPreference(p)) {
+                            category.removePreference(p);
+                        }
+                    }
+                } else {
+                    if (!initPreference(preference)) {
+                        screen.removePreference(preference);
+                    }
                 }
             }
 
@@ -173,6 +204,15 @@ public class SettingsActivity extends Activity
         public void onSaveInstanceState(Bundle outState) {
             super.onSaveInstanceState(outState);
             outState.putBoolean(SAVE_HIGHLIGHTED_KEY, mPreferenceHighlighted);
+        }
+
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+            switch (key) {
+                case IconPackStore.KEY_ICON_PACK:
+                    updatePreferences();
+                    break;
+            }
         }
 
         protected String getParentKeyForPref(String key) {
@@ -238,6 +278,9 @@ public class SettingsActivity extends Activity
                         return true;
                     });
                     return true;
+                case KEY_ICON_PACK:
+                    setupIconPackPreference(preference);
+                    return true;
             }
 
             return true;
@@ -291,6 +334,17 @@ public class SettingsActivity extends Activity
                 mNotificationDotsObserver = null;
             }
             super.onDestroy();
+        }
+
+        private void setupIconPackPreference(Preference preference) {
+            final Context context = getContext();
+            final String defaultLabel = context.getString(R.string.icon_pack_default_label);
+            final String pkgLabel = new IconPackStore(context).getCurrentLabel(defaultLabel);
+            preference.setSummary(pkgLabel);
+            preference.setOnPreferenceClickListener(p -> {
+                startActivity(new Intent(getActivity(), IconPackSettingsActivity.class));
+                return true;
+            });
         }
     }
 }

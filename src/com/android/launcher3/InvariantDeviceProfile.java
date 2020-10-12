@@ -48,6 +48,7 @@ import androidx.annotation.VisibleForTesting;
 
 import com.android.launcher3.config.BaseFlags;
 import com.android.launcher3.graphics.IconShape;
+import com.android.launcher3.lineage.icon.IconPackStore;
 import com.android.launcher3.util.ConfigMonitor;
 import com.android.launcher3.util.DefaultDisplay;
 import com.android.launcher3.util.IntArray;
@@ -150,6 +151,7 @@ public class InvariantDeviceProfile implements OnSharedPreferenceChangeListener 
         numFolderRows = p.numFolderRows;
         numFolderColumns = p.numFolderColumns;
         iconSize = p.iconSize;
+        iconPack = p.iconPack;
         iconShapePath = p.iconShapePath;
         iconPack = p.iconPack;
         landscapeIconSize = p.landscapeIconSize;

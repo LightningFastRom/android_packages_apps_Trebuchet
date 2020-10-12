@@ -26,6 +26,11 @@
     <!-- Settings message explaining when the -1 screen is available on an RTL device. [CHAR LIMIT=100] -->
     <string name="msg_minus_one_on_right">When you swipe left from main home screen</string>
 
+    <!-- Categories -->
+    <string name="settings_category_apps">Apps</string>
+    <string name="settings_category_desktop">Desktop</string>
+    <string name="settings_category_labels">Labels</string>
+
     <!-- Edit workspace -->
     <string name="settings_edit_allow_title">Allow edit</string>
     <string name="settings_edit_allow_summary_on">Icons and widgets can be added, removed and moved on the homescreen</string>
@@ -49,4 +54,10 @@
     <string name="trust_apps_help">Help</string>
     <string name="trust_apps_info_hidden">Hidden apps and their widgets are hidden from the drawer</string>
     <string name="trust_apps_info_protected">Protected apps require authentication to be opened from the launcher</string>
+
+    <!-- Icon pack -->
+    <string name="icon_pack_title">Icon pack</string>
+    <string name="icon_pack_default_label">Default</string>
+    <string name="icon_pack_add">Install more</string>
+    <string name="icon_pack_no_market">There\'s no available app store</string>
 </resources>
