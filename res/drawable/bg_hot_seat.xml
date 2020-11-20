@@ -19,7 +19,7 @@
 -->
 
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-   	<item
+    <item
         android:left="@dimen/dynamic_grid_hotseat_bg_padding"
         android:right="@dimen/dynamic_grid_hotseat_bg_padding"
         android:top="@@dimen/dynamic_grid_hotseat_bg_padding"
@@ -30,15 +30,6 @@
                    android:width="5dp" 
                    android:color="@color/hot_seat_border_color" />
 			   <corners android:radius="@*android:dimen/config_dialogCornerRadius"/>
-        </shape>
-    </item>
-	   	<item
-        android:left="@dimen/dynamic_grid_hotseat_bg_padding"
-        android:right="@dimen/dynamic_grid_hotseat_bg_padding"
-        android:top="@@dimen/dynamic_grid_hotseat_bg_padding">
-        <shape android:shape="rectangle">
-               <solid android:color="@android:color/black"/>
-               <corners android:radius="@*android:dimen/config_dialogCornerRadius"/>
         </shape>
     </item>
 </layer-list>
