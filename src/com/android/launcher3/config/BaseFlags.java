@@ -123,7 +123,7 @@ public abstract class BaseFlags {
             "Adds localized title and keyword search and ranking");
 
     public static final TogglableFlag ENABLE_PREDICTION_DISMISS = new TogglableFlag(
-            "ENABLE_PREDICTION_DISMISS", false, "Allow option to dimiss apps from predicted list");
+            "ENABLE_PREDICTION_DISMISS", true, "Allow option to dimiss apps from predicted list");
 
     public static final TogglableFlag ASSISTANT_GIVES_LAUNCHER_FOCUS = new TogglableFlag(
             "ASSISTANT_GIVES_LAUNCHER_FOCUS", false,

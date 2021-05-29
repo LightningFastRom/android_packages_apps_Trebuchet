@@ -23,6 +23,9 @@
     <string name="apprences_setting_title">Apprence</string>
     <string name="home_screen_setting_title">Home Screen</string>
     <string name="app_drawer_setting_title">App drawer</string>
+	<string name="gesture_setting_title">Gesture</string>
     <string name="mic_setting_title">Miscellaneous</string>
     <string name="default_folder_name">Untitled</string>
+	<string name="toggle_pull_down_status_bar_title">Pull Down Status Bar</string>
+	<string name="toggle_pull_down_status_bar_desc">toggle the options for opening the status bar with swipe down gesture from the home screen like on iOS/iPad OS do for global search</string>
 </resources>

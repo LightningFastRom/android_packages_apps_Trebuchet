@@ -44,6 +44,7 @@ import com.android.launcher3.uioverrides.touchcontrollers.TransposedQuickSwitchT
 import com.android.launcher3.util.TouchController;
 import com.android.launcher3.util.UiThreadHelper;
 import com.android.launcher3.util.UiThreadHelper.AsyncCommand;
+import com.android.launcher3.Utilities;
 import com.android.quickstep.SysUINavigationMode;
 import com.android.quickstep.SysUINavigationMode.Mode;
 import com.android.quickstep.TouchInteractionService;
@@ -164,7 +165,7 @@ public abstract class RecentsUiFactory {
             }
         }
 
-        if (FeatureFlags.PULL_DOWN_STATUS_BAR
+        if (Utilities.togglePullDownStatusBar(launcher)
                 && !launcher.getDeviceProfile().isMultiWindowMode) {
             list.add(new StatusBarTouchController(launcher));
         }

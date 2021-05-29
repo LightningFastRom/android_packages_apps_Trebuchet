@@ -51,7 +51,7 @@ public abstract class RecentsUiFactory {
                     .getMode().hasGestures;
             list.add(new PortraitStatesTouchController(launcher, allowDragToOverview));
         }
-        if (FeatureFlags.PULL_DOWN_STATUS_BAR && Utilities.IS_DEBUG_DEVICE
+        if (Utilities.togglePullDownStatusBar(launcher) && Utilities.IS_DEBUG_DEVICE
                 && !launcher.getDeviceProfile().isMultiWindowMode
                 && !launcher.getDeviceProfile().isVerticalBarLayout()) {
             list.add(new StatusBarTouchController(launcher));

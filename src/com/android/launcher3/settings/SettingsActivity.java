@@ -189,7 +189,16 @@ public class SettingsActivity extends Activity
                     }
                 }
             }
-
+            
+			Preference togglePullDownStatusBar = findPreference(Utilities.TOGGLE_PULL_DOWN_STATUS_BAR);
+            togglePullDownStatusBar.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    LauncherAppState.getInstanceNoCreate().setNeedsRestart();
+                    //Utilities.restart(getActivity());
+                    return true;
+                }
+            });
+			
             Preference showQsbWidget = findPreference(Utilities.QSB_SHOW);
             showQsbWidget.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 public boolean onPreferenceChange(Preference preference, Object newValue) {

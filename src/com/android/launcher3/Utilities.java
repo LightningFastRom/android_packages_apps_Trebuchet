@@ -143,7 +143,13 @@ public final class Utilities {
     public static void enableRunningInTestHarnessForTests() {
         IS_RUNNING_IN_TEST_HARNESS = true;
     }
-
+	
+	public static final String TOGGLE_PULL_DOWN_STATUS_BAR = "pref_togglePullDownStatusBar";
+	
+	public static boolean togglePullDownStatusBar(Context context) {
+         return getPrefs(context).getBoolean(TOGGLE_PULL_DOWN_STATUS_BAR, FeatureFlags.PULL_DOWN_STATUS_BAR);
+    }
+	
     public static final String QSB_SHOW = "pref_qsb_show";
 
     public static boolean isPropertyEnabled(String propertyName) {
