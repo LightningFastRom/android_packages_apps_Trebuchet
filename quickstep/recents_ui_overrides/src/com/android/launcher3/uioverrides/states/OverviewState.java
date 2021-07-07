@@ -149,7 +149,7 @@ public class OverviewState extends LauncherState {
 
     @Override
     public float getOverviewScrimAlpha(Launcher launcher) {
-        return 0.5f;
+        return 0.0f;
     }
 
     @Override
